@@ -145,6 +145,7 @@ public final class FModel {
     private static final Supplier<ItemPool<PaperCard>> archenemyCards = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getVariantCards().getAllCards(PaperCardPredicates.fromRules(CardRulesPredicates.IS_SCHEME)), PaperCard.class));
     private static final Supplier<ItemPool<PaperCard>> brawlCommander = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getCommonCards().getAllCardsNoAlt(getFormats().get("Brawl").getFilterPrinted().and(PaperCardPredicates.fromRules(CardRulesPredicates.CAN_BE_BRAWL_COMMANDER))), PaperCard.class));
     private static final Supplier<ItemPool<PaperCard>> oathbreakerCommander = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getCommonCards().getAllCardsNoAlt(PaperCardPredicates.fromRules(CardRulesPredicates.CAN_BE_OATHBREAKER.or(CardRulesPredicates.CAN_BE_SIGNATURE_SPELL))), PaperCard.class));
+    private static final Supplier<ItemPool<PaperCard>> duelCommanderPool = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getCommonCards().getAllCardsNoAlt(getMagicDb().getDuelCommanderPredicate()), PaperCard.class));
     private static final Supplier<ItemPool<PaperCard>> tinyLeadersCommander = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getCommonCards().getAllCardsNoAlt(PaperCardPredicates.fromRules(CardRulesPredicates.CAN_BE_TINY_LEADERS_COMMANDER)), PaperCard.class));
     private static final Supplier<ItemPool<PaperCard>> commanderPool = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getCommonCards().getAllCardsNoAlt(PaperCardPredicates.CAN_BE_COMMANDER), PaperCard.class));
     private static final Supplier<ItemPool<PaperCard>> avatarPool = Suppliers.memoize(() -> ItemPool.createFrom(getMagicDb().getVariantCards().getAllCards(PaperCardPredicates.fromRules(CardRulesPredicates.IS_VANGUARD)), PaperCard.class));
@@ -244,6 +245,7 @@ public final class FModel {
         getMagicDb().setPioneerPredicate(getFormats().getPioneer().getFilterRules());
         getMagicDb().setModernPredicate(getFormats().getModern().getFilterRules());
         getMagicDb().setCommanderPredicate(getFormats().get("Commander").getFilterRules());
+        getMagicDb().setDuelCommanderPredicate(getFormats().get("DuelCommander").getFilterRules());
         getMagicDb().setOathbreakerPredicate(getFormats().get("Oathbreaker").getFilterRules());
         getMagicDb().setBrawlPredicate(getFormats().get("Brawl").getFilterRules());
 
@@ -276,6 +278,11 @@ public final class FModel {
                 deckGenMatrixLoaded=false;
             }
         }
+
+        System.out.println("--- FORGE DEBUG START ---");
+        System.out.println("DC Folder Constant: " + ForgeConstants.DECK_DUELCOMMANDER_DIR);
+        System.out.println("DC Storage Count: " + getDecks().getDuelCommander().size());
+        System.out.println("--- FORGE DEBUG END ---");
     }
 
     private static boolean deckGenMatrixLoaded = false;
@@ -308,9 +315,10 @@ public final class FModel {
         return planechaseCards.get();
     }
 
-    public static ItemPool<PaperCard> getBrawlCommander() {
-        return brawlCommander.get();
+    public static ItemPool<PaperCard> getBrawlCommander() { return brawlCommander.get();
     }
+
+    public static ItemPool<PaperCard> getDuelCommander() { return duelCommanderPool.get(); }
 
     public static ItemPool<PaperCard> getOathbreakerCommander() {
         return oathbreakerCommander.get();

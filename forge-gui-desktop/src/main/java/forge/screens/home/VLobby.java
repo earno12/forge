@@ -87,6 +87,7 @@ public class VLobby implements ILobbyView {
     private final VariantCheckBox vntMomirBasic = new VariantCheckBox(GameType.MomirBasic);
     private final VariantCheckBox vntMoJhoSto = new VariantCheckBox(GameType.MoJhoSto);
     private final VariantCheckBox vntCommander = new VariantCheckBox(GameType.Commander);
+    private final VariantCheckBox vntDuelCommander = new VariantCheckBox(GameType.DuelCommander);
     private final VariantCheckBox vntOathbreaker = new VariantCheckBox(GameType.Oathbreaker);
     private final VariantCheckBox vntTinyLeaders = new VariantCheckBox(GameType.TinyLeaders);
     private final VariantCheckBox vntBrawl = new VariantCheckBox(GameType.Brawl);
@@ -94,7 +95,7 @@ public class VLobby implements ILobbyView {
     private final VariantCheckBox vntArchenemy = new VariantCheckBox(GameType.Archenemy);
     private final VariantCheckBox vntArchenemyRumble = new VariantCheckBox(GameType.ArchenemyRumble);
     private final ImmutableList<VariantCheckBox> vntBoxesLocal  =
-            ImmutableList.of(vntVanguard, vntMomirBasic, vntMoJhoSto, vntCommander, vntOathbreaker, vntBrawl, vntTinyLeaders, vntPlanechase, vntArchenemy, vntArchenemyRumble);
+            ImmutableList.of(vntVanguard, vntMomirBasic, vntMoJhoSto, vntCommander, vntOathbreaker, vntBrawl, vntTinyLeaders, vntPlanechase, vntArchenemy, vntArchenemyRumble, vntDuelCommander);
     private final ImmutableList<VariantCheckBox> vntBoxesNetwork =
             ImmutableList.of(vntVanguard, vntMomirBasic, vntMoJhoSto, vntCommander, vntOathbreaker, vntBrawl, vntTinyLeaders /*, vntPlanechase, vntArchenemy, vntArchenemyRumble */);
 
@@ -581,6 +582,7 @@ public class VLobby implements ILobbyView {
             }
             break;
         case Commander:
+        case DuelCommander:
         case Oathbreaker:
         case TinyLeaders:
         case Brawl:
@@ -780,6 +782,13 @@ public class VLobby implements ILobbyView {
                 forCommander = true;
                 deckType = iSlot == 0 ? DeckType.COMMANDER_DECK : DeckType.RANDOM_CARDGEN_COMMANDER_DECK;
                 prefKey = FPref.COMMANDER_DECK_STATES[iSlot];
+                break;
+            case DuelCommander:
+                forCommander = true;
+                // Use your specific deck type for the human player (iSlot 0)
+                deckType = iSlot == 0 ? DeckType.DUEL_COMMANDER_DECK : DeckType.RANDOM_CARDGEN_COMMANDER_DECK;
+                // You can use the standard Commander prefKey or create a new one in FPref
+                prefKey = FPref.DUEL_COMMANDER_DECK_STATES[iSlot];
                 break;
             case TinyLeaders:
                 forCommander = true;

@@ -173,6 +173,8 @@ public abstract class PreferencesStore<T extends Enum<T> & PreferencesStore.IPre
             result.add(GameType.Archenemy);
         else if (gameType.equals("Archenemy Rumble"))
             result.add(GameType.ArchenemyRumble);
+        else if (gameType.equals("Duel Commander"))
+            result.add(GameType.DuelCommander);
     }
 
     public interface IPref  {

@@ -10,6 +10,7 @@ public enum DeckType {
     RANDOM_COMMANDER_DECK("lblRandomCommanderDecks"),
     RANDOM_CARDGEN_COMMANDER_DECK("lblRandomCommanderCard-basedDecks"),
     OATHBREAKER_DECK("lblOathbreakerDecks"),
+    DUEL_COMMANDER_DECK("lblDuelCommanderDecks"),
     TINY_LEADERS_DECK("lblTinyLeadersDecks"),
     BRAWL_DECK("lblBrawlDecks"),
     SCHEME_DECK("lblSchemeDecks"),
@@ -99,6 +100,7 @@ public enum DeckType {
         if (FModel.isdeckGenMatrixLoaded()) {
             CommanderOptions = new DeckType[]{
                     DeckType.COMMANDER_DECK,
+                    DeckType.DUEL_COMMANDER_DECK,
                     DeckType.PRECON_COMMANDER_DECK,
                     DeckType.RANDOM_COMMANDER_DECK,
                     DeckType.RANDOM_CARDGEN_COMMANDER_DECK,
@@ -108,6 +110,7 @@ public enum DeckType {
         }else{
             CommanderOptions = new DeckType[]{
                     DeckType.COMMANDER_DECK,
+                    DeckType.DUEL_COMMANDER_DECK,
                     DeckType.PRECON_COMMANDER_DECK,
                     DeckType.RANDOM_COMMANDER_DECK,
                     DeckType.RANDOM_DECK,

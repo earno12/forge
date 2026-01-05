@@ -74,7 +74,7 @@ public final class CEditorCommander extends CDeckEditor<Deck> {
     @SuppressWarnings("serial")
     public CEditorCommander(final CDetailPicture cDetailPicture, GameType gameType0) {
         super(gameType0 == GameType.TinyLeaders ? FScreen.DECK_EDITOR_TINY_LEADERS : gameType0 == GameType.Brawl ? FScreen.DECK_EDITOR_BRAWL :
-                gameType0 == GameType.Oathbreaker ? FScreen.DECK_EDITOR_OATHBREAKER : FScreen.DECK_EDITOR_COMMANDER, cDetailPicture, gameType0);
+                gameType0 == GameType.DuelCommander ? FScreen.DECK_EDITOR_DUEL_COMMANDER : gameType0 == GameType.Oathbreaker ? FScreen.DECK_EDITOR_OATHBREAKER : FScreen.DECK_EDITOR_COMMANDER, cDetailPicture, gameType0);
         allSections.add(DeckSection.Main);
         allSections.add(DeckSection.Sideboard);
         allSections.add(DeckSection.Commander);
@@ -114,6 +114,9 @@ public final class CEditorCommander extends CDeckEditor<Deck> {
             break;
         case Oathbreaker:
             this.controller = new DeckController<>(decks.getOathbreaker(), this, newCreator);
+            break;
+        case DuelCommander: // ADD THIS
+            this.controller = new DeckController<>(decks.getDuelCommander(), this, newCreator);
             break;
         default:
             this.controller = new DeckController<>(decks.getCommander(), this, newCreator);

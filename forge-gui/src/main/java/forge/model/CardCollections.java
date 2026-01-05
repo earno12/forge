@@ -41,6 +41,7 @@ public class CardCollections {
     private IStorage<Deck> scheme;
     private IStorage<Deck> plane;
     private IStorage<Deck> commander;
+    private IStorage<Deck> duelCommander;
     private IStorage<Deck> commanderPrecons;
     private IStorage<Deck> oathbreaker;
     private IStorage<Deck> tinyLeaders;
@@ -115,6 +116,15 @@ public class CardCollections {
                     true);
         }
         return commander;
+    }
+
+    public IStorage<Deck> getDuelCommander() {
+        if (duelCommander == null) {
+            duelCommander = new StorageImmediatelySerialized<>("Duel Commander decks",
+                    new DeckStorage(new File(ForgeConstants.DECK_DUELCOMMANDER_DIR), ""),
+                    true); // Ensure this 'true' is here
+        }
+        return duelCommander;
     }
 
     public IStorage<Deck> getOathbreaker() {

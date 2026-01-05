@@ -40,6 +40,7 @@ public class StaticData {
     private Predicate<PaperCard> pioneerPredicate;
     private Predicate<PaperCard> modernPredicate;
     private Predicate<PaperCard> commanderPredicate;
+    private Predicate<PaperCard> duelCommanderPredicate;
     private Predicate<PaperCard> oathbreakerPredicate;
 
     private boolean filteredHandsEnabled = false;
@@ -430,6 +431,8 @@ public class StaticData {
 
     public void setCommanderPredicate(Predicate<PaperCard> commanderPredicate) { this.commanderPredicate = commanderPredicate; }
 
+    public void setDuelCommanderPredicate(Predicate<PaperCard> duelCommanderPredicate) { this.duelCommanderPredicate = duelCommanderPredicate; }
+
     public void setOathbreakerPredicate(Predicate<PaperCard> oathbreakerPredicate) { this.oathbreakerPredicate = oathbreakerPredicate; }
 
     public void setBrawlPredicate(Predicate<PaperCard> brawlPredicate) { this.brawlPredicate = brawlPredicate; }
@@ -441,6 +444,8 @@ public class StaticData {
     public Predicate<PaperCard> getModernPredicate() { return modernPredicate; }
 
     public Predicate<PaperCard> getCommanderPredicate() { return commanderPredicate; }
+
+    public Predicate<PaperCard> getDuelCommanderPredicate() { return duelCommanderPredicate; }
 
     public Predicate<PaperCard> getOathbreakerPredicate() { return oathbreakerPredicate; }
 

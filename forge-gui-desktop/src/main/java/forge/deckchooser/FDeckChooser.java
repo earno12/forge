@@ -550,6 +550,9 @@ public class FDeckChooser extends JPanel implements IDecksComboBoxListener {
             case COMMANDER_DECK:
                 updateCustom();
                 break;
+            case DUEL_COMMANDER_DECK:
+                updateDecks(DeckProxy.getAllDuelCommanderDecks(), ItemManagerConfig.COMMANDER_DECKS);
+                break;
             case COLOR_DECK:
                 updateColors(null);
                 break;

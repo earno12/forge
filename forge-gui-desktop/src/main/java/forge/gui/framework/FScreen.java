@@ -89,6 +89,15 @@ public class FScreen {
             "lblCloseEditor",
             ForgeConstants.EDITOR_LAYOUT_FILE,
             false);
+    public static final FScreen DECK_EDITOR_DUEL_COMMANDER = new FScreen(
+            VDeckEditorUI.SINGLETON_INSTANCE,
+            CDeckEditorUI.SINGLETON_INSTANCE,
+            "lblDuelCommanderDeckEditor", // This refers to a translation key
+            FSkin.getImage(FSkinProp.IMG_PACK),
+            true,
+            "lblCloseEditor",
+            ForgeConstants.EDITOR_LAYOUT_FILE,
+            false);
     public static final FScreen DECK_EDITOR_OATHBREAKER = new FScreen(
             VDeckEditorUI.SINGLETON_INSTANCE,
             CDeckEditorUI.SINGLETON_INSTANCE,

@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class DeckPreferences {
     private static String selectedDeckType = "", currentDeck = "", draftDeck = "", sealedDeck = "", commanderDeck = "",
-            oathbreakerDeck = "", tinyLeadersDeck = "", brawlDeck = "", planarDeck = "", schemeDeck = "";
+            oathbreakerDeck = "", tinyLeadersDeck = "", brawlDeck = "", planarDeck = "", schemeDeck = "", duelCommanderDeck = "";
     private static Map<String, DeckPreferences> allPrefs = new HashMap<>();
 
     public static DeckType getSelectedDeckType() {
@@ -115,6 +115,15 @@ public class DeckPreferences {
         save();
     }
 
+    public static String getDuelCommanderDeck() {
+        return duelCommanderDeck;
+    }
+    public static void setDuelCommanderDeck(String duelCommanderDeck0) {
+        if (duelCommanderDeck.equals(duelCommanderDeck0)) { return; }
+        duelCommanderDeck = duelCommanderDeck0;
+        save();
+    }
+
     public static DeckPreferences getPrefs(DeckProxy deck) {
         String key = deck.getUniqueKey();
         DeckPreferences prefs = allPrefs.computeIfAbsent(key, k -> new DeckPreferences());
@@ -139,6 +148,7 @@ public class DeckPreferences {
             tinyLeadersDeck = root.getAttribute("tinyLeadersDeck");
             planarDeck = root.getAttribute("planarDeck");
             schemeDeck = root.getAttribute("schemeDeck");
+            duelCommanderDeck = root.getAttribute("duelCommanderDeck");
 
             final NodeList cards = document.getElementsByTagName("deck");
             for (int i = 0; i < cards.getLength(); i++) {
@@ -172,6 +182,7 @@ public class DeckPreferences {
             root.setAttribute("tinyLeadersDeck", tinyLeadersDeck);
             root.setAttribute("planarDeck", planarDeck);
             root.setAttribute("schemeDeck", schemeDeck);
+            root.setAttribute("duelCommanderDeck", duelCommanderDeck);
             document.appendChild(root);
 
             for (Map.Entry<String, DeckPreferences> entry : allPrefs.entrySet()) {

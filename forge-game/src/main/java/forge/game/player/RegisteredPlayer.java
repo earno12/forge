@@ -160,11 +160,14 @@ public class RegisteredPlayer {
     		start.setStartingLife(40);
     		start.schemes = schemes;
     	}
-    	if (appliedVariants.contains(GameType.Commander)) {
+        if (appliedVariants.contains(GameType.Commander) || appliedVariants.contains(GameType.DuelCommander)) {
             start.commanders = deck.getCommanders();
-            start.setStartingLife(start.getStartingLife() + 20); // 903.7: ...each player sets his or her life total to 40
-		                                                         // Modified for layering of variants to life +20
-    	}
+
+            // Duel Commander stays at 20 (base), regular Commander adds 20 to reach 40.
+            if (appliedVariants.contains(GameType.Commander)) {
+                start.setStartingLife(start.getStartingLife() + 20);
+            }
+        }
         if (appliedVariants.contains(GameType.Oathbreaker)) {
             start.commanders = deck.getCommanders();
         }

@@ -411,6 +411,11 @@ public final class CardRules implements ICardCharacteristics {
         return false;
     }
 
+    public boolean canBeDuelCommander() {
+        // By default, use the standard Commander rules (Legendary Creature/Planeswalker)
+        return canBeCommander();
+    }
+
     public boolean canBeCreature() {
         CardType type = mainPart.getType();
         if (type.isCreature()) {
