@@ -1,9 +1,7 @@
 package forge.screens.deckeditor.controllers;
 
 import forge.deck.DeckProxy;
-import forge.game.GameType;
 import forge.gui.framework.ICDoc;
-// Import your new view
 import forge.itemmanager.DeckManager;
 import forge.screens.deckeditor.views.VDuelCommanderDecks;
 
