@@ -278,11 +278,6 @@ public final class FModel {
                 deckGenMatrixLoaded=false;
             }
         }
-
-        System.out.println("--- FORGE DEBUG START ---");
-        System.out.println("DC Folder Constant: " + ForgeConstants.DECK_DUELCOMMANDER_DIR);
-        System.out.println("DC Storage Count: " + getDecks().getDuelCommander().size());
-        System.out.println("--- FORGE DEBUG END ---");
     }
 
     private static boolean deckGenMatrixLoaded = false;
